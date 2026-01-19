@@ -35,6 +35,18 @@ class RequestPayload(BaseModel):
     user_input: UserInput
     lands: List[Land]
 
+@app.get("/")
+def home():
+    return {
+        "status": "OK",
+        "message": "Agentic AI – Vacant Land Decision Intelligence is live on Vercel",
+        "usage": {
+            "endpoint": "/run",
+            "method": "POST",
+            "description": "Run Agentic AI pipeline"
+        }
+    }
+
 
 @app.post("/run")
 def run_agentic_ai(payload: RequestPayload):
